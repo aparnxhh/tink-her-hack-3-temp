@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Inclusive Accessibility Platform</title>
+
+<!-- Inline CSS -->
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #2d3e50;
+    color: white;
+    padding: 20px 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.2s;
+    border: none;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+.contrast-btn {
+    background-color: #000;
+    color: #fff;
+}
+
+.speech-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.emergency-btn {
+    background-color: red;
+    color: white;
+}
+
+.emergency-msg {
+    display: none;
+    background-color: yellow;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.content-section {
+    margin-top: 20px;
+    padding: 20px;
+    border-top: 2px solid #ccc;
+}
+
+.content-card {
+    background-color: lightblue;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    margin-top: 40px;
+    font-size: 14px;
+    background-color: #2d3e50;
+    color: white;
+    padding: 10px;
+}
+
+.join-now-container {
+    margin: 20px;
+}
+
+.join-now-container button {
+    background-color: #2196F3;
+    color: white;
+    width: 100%;
+}
+
+.border-box {
+    border: 2px solid #2196F3;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.image-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+}
+
+/* High Contrast Mode */
+body.high-contrast {
+    background-color: #000;
+    color: #fff;
+}
+
+body.high-contrast button {
+    background-color: #fff;
+    color: #000;
+}
+
+/* Large Text Mode */
+body.large-text {
+    font-size: 20px;
+}
+
+/* Image Styling */
+.button-image {
+    max-width: 80px; /* Image size set to 80px width */
+    height: auto;
+    border-radius: 6px;
+    margin-right: 10px;
+}
+
+/* Layout for buttons with images on the left side */
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.button-container img {
+    margin-right: 15px; /* Space between image and button */
+}
+
+</style>
+</head>
+<body>
+
+<!-- Image Section -->
+<section class="image-section">
+<h2>We Care for You: Sensitizing Youth</h2>
+<div class="border-box">
+<img src="c:\Users\Aparna P R\Desktop\images for code\1606929082.webp" alt="Sensitizing Youth Image">
+</div>
+</section>
+
+<header>
+<h1>Welcome to the Inclusive Accessibility Platform</h1>
+<p>Explore content, games, news, videos, and more with accessibility features.</p>
+</header>
+
+<!-- Join Now Section -->
+<div class="join-now-container">
+<h3>Join Now</h3>
+<button onclick="joinNow()">Join Now</button>
+</div>
+
+<!-- Main Buttons -->
+<section class="container">
+<!-- High Contrast Button and Image -->
+<div class="button-container">
+<img class="button-image" src="c:\Users\Aparna P R\Desktop\images for code\d1n0fas-ae0f84bc-a41f-4f17-aa7c-85eb34461b67.png" alt="High Contrast">
+<button class="contrast-btn" onclick="toggleContrast()">Toggle High Contrast</button>
+</div>
+
+<!-- Large Text Button and Image -->
+<div class="button-container">
+<img class="button-image" src="c:\Users\Aparna P R\Desktop\images for code\8f13ba82600311aa8fd2c1c060f2865e - Copy.jpg" alt="Large Text">
+<button onclick="toggleLargeText()">Toggle Large Text</button>
+</div>
+
+<!-- Speech Button and Image -->
+<div class="button-container">
+<img class="button-image" src="c:\Users\Aparna P R\Desktop\images for code\sound-icon-vector-illustration - Copy.jpg" alt="Read Text">
+<button class="speech-btn" onclick="readText()">Read Text Out Loud</button>
+</div>
+
+<!-- Emergency Button and Image -->
+<div class="button-container">
+<img class="button-image" src="c:\Users\Aparna P R\Desktop\images for code\emergency-call-flat-illustration-red-600nw-2255084737.webp" alt="Emergency">
+<button class="emergency-btn" onclick="triggerEmergency()">Emergency Assistance</button>
+<div class="emergency-msg" id="emergency-msg">
+Emergency assistance is being contacted...
+</div>
+</div>
+</section>
+
+<!-- Voice Commander Section -->
+<section class="container">
+    <h2>Voice Commander</h2>
+    <button onclick="startListening()">Start Listening</button>
+    <button onclick="stopListening()">Stop Listening</button>
+</section>
+
+<!-- Content Section -->
+<section class="content-section">
+<h2>Explore Content</h2>
+<div class="content">
+<div class="content-card">
+<h3>Latest News</h3>
+<p>Get the latest news and updates.</p>
+<button onclick="openNews()">Read News</button>
+</div>
+
+<div class="content-card">
+<h3>YouTube Videos</h3>
+<p>Watch educational and entertaining videos.</p>
+<button onclick="openYouTube()">Watch Videos</button>
+</div>
+
+<div class="content-card">
+<h3>Stories & eBooks</h3>
+<p>Read stories and eBooks for all ages.</p>
+<button onclick="openStories()">Read Stories</button>
+</div>
+</div>
+</section>
+
+<footer>
+<p>Inclusive Platform | Developed by Your Team</p>
+</footer>
+
+<!-- Inline JavaScript -->
+<script>
+// Speech Recognition Setup
+const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+recognition.continuous = true;
+recognition.interimResults = true;
+
+let isListening = false;
+
+function joinNow() {
+    alert("You have joined the platform! Welcome!");
+}
+
+function toggleContrast() {
+    document.body.classList.toggle('high-contrast');
+}
+
+function toggleLargeText() {
+    document.body.classList.toggle('large-text');
+}
+
+function readText() {
+    const textContent = document.body.innerText;
+    const speech = new SpeechSynthesisUtterance(textContent);
+    window.speechSynthesis.speak(speech);
+}
+
+function triggerEmergency() {
+    const emergencyMsg = document.getElementById('emergency-msg');
+    emergencyMsg.style.display = 'block';
+    setTimeout(() => {
+        emergencyMsg.innerHTML = 'Help is on the way! Stay calm.';
+    }, 3000);
+}
+
+function openNews() {
+    window.open('https://timesofindia.indiatimes.com/news');
+}
+
+function openYouTube() {
+    window.open('https://www.youtube.com/');
+}
+
+function openStories() {
+    window.open('https://k8school.com/short-story-in-english-with-moral/');
+}
+
+// Start Listening for Voice Commands
+function startListening() {
+    if (!isListening) {
+        recognition.start();
+        isListening = true;
+        recognition.onresult = function (event) {
+            const command = event.results[0][0].transcript.toLowerCase();
+            console.log(command);
+
+            if (command.includes('join now')) {
+                joinNow();
+            } else if (command.includes('toggle high contrast')) {
+                toggleContrast();
+            } else if (command.includes('toggle large text')) {
+                toggleLargeText();
+            } else if (command.includes('read text out loud')) {
+                readText();
+            } else if (command.includes('emergency assistance')) {
+                triggerEmergency();
+            } else if (command.includes('read news')) {
+                openNews();
+            } else if (command.includes('watch videos')) {
+                openYouTube();
+            } else if (command.includes('read stories')) {
+                openStories();
+            } else {
+                const speech = new SpeechSynthesisUtterance("Sorry, I didn't understand that command.");
+                window.speechSynthesis.speak(speech);
+            }
+        };
+        const speech = new SpeechSynthesisUtterance("Voice commander is now active. Please give a command .before using this app lets explore what the app is about. we care for you sensitizing youth.welcome to the exclusive accessibility platform. explore content,games,news,videos and more with accessibility feature. the features available are toggle high contrast,toggle large text,read text out loud,emergency assistance,explore contents, latest news.get the latest news and updates . youtube videos,watch educational and entertaining videos.stories and e books ,read stories and e books for all ages ."); 
+        window.speechSynthesis.speak(speech);
+    }
+}
+
+// Stop Listening
+function stopListening() {
+    recognition.stop();
+    isListening = false;
+    const speech = new SpeechSynthesisUtterance("Voice commander is now inactive.");
+    window.speechSynthesis.speak(speech);
+}
+</script>
+
+</body>
+</html>
+​
